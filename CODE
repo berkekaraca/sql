@@ -14,7 +14,7 @@ CREATE TABLE Roles (
     role_name VARCHAR(50) UNIQUE NOT NULL
 );
 
--- Roller tablosu
+
 INSERT INTO Roles (role_name) VALUES ('Guest'), ('Admin'), ('SuperAdmin');
 
 INSERT INTO Users (username, display_name, phone, email, password_hash, role_id)
@@ -54,10 +54,9 @@ WHERE u.username = ? AND u.password_hash = ?;
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Veritabanı bağlantısı
+    
     $conn = new mysqli("localhost", "root", "", "your_database");
 
-    // Bağlantı kontrolü
     if ($conn->connect_error) {
         die("Bağlantı hatası: " . $conn->connect_error);
     }
